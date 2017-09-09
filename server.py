@@ -7,9 +7,10 @@ app = Flask(__name__)
 def hello():
     return "How are you?"
 
-@app.route('/weather')
+
+@app.route('/weather/<arg>')
 def weather(arg):
-    return render_template('weather.html')
+    return render_template('weather.html', arg=arg)
 
 
 if __name__ == "__main__":
