@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import requests
+import weather
 
 app = Flask(__name__)
 
@@ -10,11 +10,11 @@ def hello():
 
 
 @app.route('/weather', methods=['POST'])
-def weather():
+def weather_report():
     zipcode = request.form['zip']
-    r = requests.get('http://api.openweathermap.org/data/2.5/weather?zip='+zipcode+',us&appid=902daaa31b338d0d36827a506b7353e3')
-    tempk = float(r.json()['main']['temp'])
+    tempk = weather.get_weather_by_zip(zipcode).temperature
     return render_template('weather.html', temp=tempk)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
