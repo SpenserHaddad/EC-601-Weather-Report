@@ -2,7 +2,7 @@
 <html>
 <title>Your weather report</title>
 <body>
-    <form method="POST" action="/weather">
+    <form method="POST" action={{ url_for('weather_report') }}>
       Zip Code: <input type="text" name="zip">
       <input type="submit">
     </form>
