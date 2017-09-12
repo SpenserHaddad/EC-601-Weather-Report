@@ -12,7 +12,7 @@ def hello():
 @app.route('/weather', methods=['POST'])
 def weather_report():
     zipcode = request.form['zip']
-    tempk = weather.get_weather_by_zip(zipcode).temperature
+    tempk = weather.get_weather_by_zip(zipcode).temperatures
     return render_template('weather.html', temp=tempk)
 
 
