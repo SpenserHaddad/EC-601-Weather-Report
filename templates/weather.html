@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
 <title>Your weather report</title>
-<body>
-    <p>The temperature is: {{ temp[0],temp[1],temp[2],temp[3],temp[4] }} K</p>
+<body onload="decode_list()">
+    <p>The temperature is:  K</p>
 </body>
 </html>
+
+
+<script language="JavaScript">
+function decode_list(){
+        var data = {{ temp  }};
+        document.write("The temperature is: <br />");
+        for(i=0;i<5;i++){
+           document.write(Math.floor((data[i]-273.15)*100)/100+" ℃"+"<br />");
+        }
+
+}
+</script>
