@@ -50,6 +50,9 @@ def unpack_weather_data(weather_data):
     temp.append(data[3]['main']['temp'])
     temp.append(data[4]['main']['temp'])
 
+    for i in range(0,len(temp)):
+        temp[i] = round(((temp[i]-273.15)*100)/100,2)
+
     weathers = [data['weather'][0]['main'] for data in data[0:5]]
     return Weather(temperatures=temp, weather=weathers)
 
