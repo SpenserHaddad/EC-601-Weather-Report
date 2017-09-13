@@ -2,7 +2,11 @@
 <html>
 <title>Your weather report</title>
 <body onload="decode_list()">
+    {% if failed %}
+    <p>No location was input, please <a href={{ url_for('index') }}>try again</a></p>
+    {% else %}
     <p>The temperature is:  K</p>
+    {% endif %}
 </body>
 </html>
 
@@ -14,6 +18,5 @@ function decode_list(){
         for(i=0;i<5;i++){
            document.write(Math.floor((data[i]-273.15)*100)/100+" ℃"+"<br />");
         }
-
 }
 </script>
