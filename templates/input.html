@@ -3,8 +3,8 @@
 <title>Your weather report</title>
 <body>
     <form method="POST" action={{ url_for('weather_report') }}>
-      Zip Code: <input type="text" name="zip">
-      <input type="submit">
+      <input type="text" name="location" placeholder="Enter a zip code, city or IP address"/>
+      <input type="submit" />
     </form>
 </body>
 </html>
