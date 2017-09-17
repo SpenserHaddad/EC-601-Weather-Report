@@ -80,6 +80,26 @@ p {
         border-color: #009ad8;
         color: #009ad8; }
 
+.location-container {
+  width: 100%;
+  background: #323544;
+  display: table;
+  table-layout: fixed;
+  vertical-align: center;
+  text-align: center;
+  height: 2em;
+  margin-top: 10em;
+}
+
+.location-text {
+  display: table-cell;
+}
+
+.location-button {
+  display: table-cell;
+  vertical-align: top;
+}
+
 .forecast-container {
   width: 100%;
   background: #323544;

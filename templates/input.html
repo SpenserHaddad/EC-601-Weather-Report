@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
 <title>Your weather report</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+  
+    <title>Compass Starter by Ariona, Rian</title>
+  
+    <!-- Loading third party fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+    <link href= "{{ url_for('static',filename='fonts/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+  
+    <!-- Loading main css file -->
+    <link rel="stylesheet" href= "{{ url_for('static',filename='style.css') }}">
+</head>
 <body>
+  <div class="location-container">
+    <p><b>Get the 5-day forecast for your area</b></p>
     <form method="POST" action={{ url_for('weather_report') }}>
-      <input type="text" name="location" placeholder="Enter a zip code, city or IP address"/>
-      <input type="submit" />
+      <input class="location-text" type="text" name="location" placeholder="Enter a zip code, city or IP"/>
+      <input class="location-button" type="submit" />
     </form>
+  </div>
 </body>
 </html>
