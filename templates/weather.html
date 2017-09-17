@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html>
 <title>Your weather report</title>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+  <title>Compass Starter by Ariona, Rian</title>
+
+  <!-- Loading third party fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+  <link href= "{{ url_for('static',filename='fonts/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+  <!-- Loading main css file -->
+  <link rel="stylesheet" href= "{{ url_for('static',filename='style.css') }}">
+</head>
 <body onload="decode_list()">
     {% if failed %}
     <p>No location was input, please <a href={{ url_for('index') }}>try again</a></p>
     {% else %}
-    <p>The temperature is:  K</p>
+    <!-- <p>The temperature is:  K</p> -->
+    <div class="site-content">
+        <div class="site-header">
+            <div class="container">
+                <a href="index.html" class="branding">
+                    <img src="images/logo.png" alt="" class="logo">
+                    <div class="logo-type">
+                        <h1 class="site-title">5 Day Weather Forecast</h1>
+                    </div>
+                </a>
+
+                <!-- Default snippet for navigation -->
+                <div class="main-navigation">
+                    <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <ul class="menu">
+                        <li class="menu-item current-menu-item"><a href={{ url_for('index') }}>Home</a></li>
+                    </ul> <!-- .menu -->
+                </div> <!-- .main-navigation -->
+
+                <div class="mobile-navigation"></div>
+
+            </div>
+        </div> <!-- .site-header -->
+
+    <div class="hero" data-bg-image="static/images/banner.png">
+        <div class="container">
+        </div>
+    </div>
+    <div class="forecast-table">
+        <div class="container">
+            <div class="forecast-container">
+                {% for i in range(5) %}
+                <div class="forecast">
+                    <div class="forecast-header">
+                        <div class="day">Day {{ i + 1 }}</div>
+                    </div> 
+                    <div class="forecast-content">
+                        <div class="forecast-icon">
+                            <img src="static/images/icons/icon-3.svg" alt="" width=48>
+                        </div>
+                        <div class="degree">{{ temp[i]|round|int}}&deg;C</div>
+                        <small>{{ (temp[i] * 1.8 + 32)|round|int}}&deg;F</small>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
     {% endif %}
 </body>
 </html>
@@ -14,9 +76,9 @@
 <script language="JavaScript">
 function decode_list(){
         var data = {{ temp  }};
-        document.write("The temperature is: <br />");
-        for(i=0;i<5;i++){
-           document.write(Math.floor((data[i]-273.15)*100)/100+" ℃"+"<br />");
-        }
+        //document.write("The temperature is: <br />");
+        // for(i=0;i<5;i++){
+        //    document.write(Math.floor((data[i]-273.15)*100)/100+" ℃"+"<br />");
+        // }
 }
 </script>
